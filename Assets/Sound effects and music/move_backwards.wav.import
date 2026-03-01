@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/move_backwards.wav-b9141a2d3ee4627c16dc71435f234db8.sample"
+
+[deps]
+
+source_file="res://Assets/Sound effects and music/move_backwards.wav"
+dest_files=[ "res://.import/move_backwards.wav-b9141a2d3ee4627c16dc71435f234db8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

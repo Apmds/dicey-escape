@@ -1,0 +1,433 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tabuleiro.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Enemy.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Dice.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Buttons/Button_pause_pressed.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Buttons/Button_pause.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Fonts/coolville.regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/Sound effects and music/button_press.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Final_attack.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=2]
+resource_name = "kill_enemy"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 492, 328 ), Vector2( 77, 75 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Camera:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.2, -5.25, 30, -0.6, 0.75, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Camera:zoom:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.3, -0.461793, 0.7, -0.3, -0.0569665, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Camera:zoom:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.3, -0.440827, 0.7, -0.3, -0.0464839, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Fade_out:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Player:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Player:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Player:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 128, 105 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("HUD/Pause_Button:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("FinalAttack:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 2, 2 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("FinalAttack:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "move_enemy"
+length = 1.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Enemy:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 84, -0.25, 0, 0.2, -1.45834, 109, -0.2, -22.9861, 0.25, 0, 124, -0.3, 37.0139, 0.25, 0, 50, -0.25, 0, 0.25, 0, 34, -0.3, -41.0417, 0.25, 0, 84, -0.1, 31.875, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Enemy:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 71, -0.25, 0, 0.25, 0, 55, -0.25, 0, 0.25, 0, 104, -0.25, 0, 0.15, 0.763878, 104, -0.2, 22.2917, 0.25, 0, 51, -0.25, 0, 0.25, 0, 71, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "start_game"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade_out:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 82, 574 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HUD/Pause_Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FinalAttack:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 100
+font_data = ExtResource( 8 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_intensity = 0.3
+glow_strength = 1.1
+glow_bloom = 0.07
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+glow_hdr_luminance_cap = 2.0
+
+[node name="Game" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/kill_enemy = SubResource( 2 )
+anims/move_enemy = SubResource( 1 )
+anims/start_game = SubResource( 5 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Pause_menu" type="Control" parent="HUD"]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="ColorRect" parent="HUD/Pause_menu"]
+margin_right = 984.0
+margin_bottom = 656.0
+color = Color( 0, 0, 0, 0.701961 )
+
+[node name="Title" type="Label" parent="HUD/Pause_menu"]
+margin_top = 100.0
+margin_right = 984.0
+margin_bottom = 274.0
+custom_fonts/font = SubResource( 3 )
+text = "PAUSED"
+align = 1
+valign = 1
+
+[node name="Pause_Button" type="TextureButton" parent="HUD"]
+pause_mode = 2
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 891.0
+margin_top = 10.0
+margin_right = 973.0
+margin_bottom = 92.0
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="Fade_out" type="CanvasModulate" parent="."]
+position = Vector2( 492, 328 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -667.0
+margin_top = -526.0
+margin_right = 1363.0
+margin_bottom = 1038.0
+color = Color( 0.0627451, 0.027451, 0.184314, 1 )
+
+[node name="Map" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Enemy" type="Sprite" parent="."]
+position = Vector2( 84, 71 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Enemy"]
+one_shot = true
+
+[node name="Dice" parent="Enemy" instance=ExtResource( 5 )]
+position = Vector2( 10, 13.5 )
+
+[node name="FinalAttack" type="Sprite" parent="."]
+visible = false
+position = Vector2( 79, 74 )
+rotation = -0.486947
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 82, 574 )
+
+[node name="Houses" type="Node2D" parent="."]
+
+[node name="1" type="Position2D" parent="Houses"]
+position = Vector2( 82, 574 )
+
+[node name="2" type="Position2D" parent="Houses"]
+position = Vector2( 246, 574 )
+
+[node name="3" type="Position2D" parent="Houses"]
+position = Vector2( 410, 574 )
+
+[node name="4" type="Position2D" parent="Houses"]
+position = Vector2( 574, 574 )
+
+[node name="5" type="Position2D" parent="Houses"]
+position = Vector2( 738, 574 )
+
+[node name="6" type="Position2D" parent="Houses"]
+position = Vector2( 902, 574 )
+
+[node name="7" type="Position2D" parent="Houses"]
+position = Vector2( 902, 410 )
+
+[node name="8" type="Position2D" parent="Houses"]
+position = Vector2( 738, 410 )
+
+[node name="9" type="Position2D" parent="Houses"]
+position = Vector2( 574, 410 )
+
+[node name="10" type="Position2D" parent="Houses"]
+position = Vector2( 410, 410 )
+
+[node name="11" type="Position2D" parent="Houses"]
+position = Vector2( 246, 410 )
+
+[node name="12" type="Position2D" parent="Houses"]
+position = Vector2( 82, 410 )
+
+[node name="13" type="Position2D" parent="Houses"]
+position = Vector2( 82, 246 )
+
+[node name="14" type="Position2D" parent="Houses"]
+position = Vector2( 246, 246 )
+
+[node name="15" type="Position2D" parent="Houses"]
+position = Vector2( 410, 246 )
+
+[node name="16" type="Position2D" parent="Houses"]
+position = Vector2( 574, 246 )
+
+[node name="17" type="Position2D" parent="Houses"]
+position = Vector2( 738, 246 )
+
+[node name="18" type="Position2D" parent="Houses"]
+position = Vector2( 902, 246 )
+
+[node name="19" type="Position2D" parent="Houses"]
+position = Vector2( 902, 82 )
+
+[node name="20" type="Position2D" parent="Houses"]
+position = Vector2( 738, 82 )
+
+[node name="21" type="Position2D" parent="Houses"]
+position = Vector2( 574, 82 )
+
+[node name="22" type="Position2D" parent="Houses"]
+position = Vector2( 410, 82 )
+
+[node name="23" type="Position2D" parent="Houses"]
+position = Vector2( 246, 82 )
+
+[node name="24" type="Position2D" parent="Houses"]
+position = Vector2( 82, 82 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 492, 328 )
+rotating = true
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="Select_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+bus = "Sound effects"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[connection signal="toggled" from="HUD/Pause_Button" to="." method="_on_Pause_Button_toggled"]
+[connection signal="timeout" from="Enemy/Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,407 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Assets/Buttons/Button_rectangle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/coolville.regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Buttons/Button_rectangle_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/Text_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Assets/Enemy.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player_.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Main_menu.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Buttons/Button_back.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Buttons/Button_back_pressed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sound effects and music/button_press.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Buttons/Button_sound_pressed.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Buttons/Button_sound.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0627451, 0.027451, 0.184314, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.0313726, 0.0156863, 0.0901961, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0392157, 0.0156863, 0.0901961, 1 )
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color( 0.0235294, 0.0117647, 0.054902, 1 )
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color( 0.0392157, 0.0156863, 0.0901961, 0.694118 )
+shadow_size = 20
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0627451, 0.027451, 0.184314, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.0313726, 0.0156863, 0.0901961, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=8]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Close_credits"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Credits:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 656 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Open_credits"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Credits:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 656 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Credits_button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Open_scene"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade out:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Credits:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 656 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Play_game"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade out:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.0627451, 0.027451, 0.184314, 1 ), Color( 0, 0, 0.00392157, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Play_button:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Credits_button:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Environment" id=16]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_intensity = 0.33
+glow_strength = 1.26
+glow_bloom = 0.07
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+glow_hdr_luminance_cap = 2.0
+
+[node name="Main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Fade out" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="Background" type="Panel" parent="."]
+margin_right = 984.0
+margin_bottom = 656.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="Instructions_background" type="Panel" parent="."]
+margin_left = 62.0
+margin_top = 106.0
+margin_right = 582.0
+margin_bottom = 600.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Text" type="Label" parent="Instructions_background"]
+margin_left = 40.0
+margin_top = 21.0
+margin_right = 489.0
+margin_bottom = 283.0
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "You are a number ninja, a race of powerful warriors who use mathematics to help the ones in need. For a long time, your people have been protecting the dice: an artifact extremely powerful. It brings randomness to counter the otherwise exact operations the number ninjas work with. One day, a demon by the name of Diceous was able to retrieve the dice. Your mission is to solve math operations in order to go after Diceous. He won't just be waiting for you though! After rolling the dice, you will be swept away from him, nullifying some of your progress."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Diceous" type="TextureRect" parent="Instructions_background"]
+margin_left = 297.0
+margin_top = 265.0
+margin_right = 465.0
+margin_bottom = 419.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="You" type="TextureRect" parent="Instructions_background"]
+margin_left = 103.0
+margin_top = 302.0
+margin_right = 193.0
+margin_bottom = 396.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Sutitle" type="Label" parent="Instructions_background"]
+margin_left = 87.0
+margin_top = 407.0
+margin_right = 481.0
+margin_bottom = 446.0
+custom_fonts/font = SubResource( 7 )
+text = "YOU     DICEOUS"
+align = 1
+valign = 1
+
+[node name="Play_button" type="TextureButton" parent="."]
+margin_left = 633.0
+margin_top = 260.0
+margin_right = 927.0
+margin_bottom = 364.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="Label" parent="Play_button"]
+margin_top = 5.0
+margin_right = 294.0
+margin_bottom = 109.0
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+align = 1
+valign = 1
+
+[node name="Credits_button" type="TextureButton" parent="."]
+margin_left = 633.0
+margin_top = 400.0
+margin_right = 927.0
+margin_bottom = 504.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="Label" parent="Credits_button"]
+margin_top = 5.0
+margin_right = 294.0
+margin_bottom = 109.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="Sound_button" type="TextureButton" parent="."]
+margin_left = 741.0
+margin_top = 513.0
+margin_right = 821.0
+margin_bottom = 593.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="Game_title" type="Label" parent="."]
+margin_left = 602.0
+margin_top = 38.0
+margin_right = 957.0
+margin_bottom = 234.0
+custom_fonts/font = SubResource( 9 )
+text = "dicey escape"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Credits" type="Control" parent="."]
+margin_top = 656.0
+margin_right = 40.0
+margin_bottom = 696.0
+
+[node name="Background" type="Panel" parent="Credits"]
+margin_right = 984.0
+margin_bottom = 656.0
+custom_styles/panel = SubResource( 11 )
+
+[node name="Title" type="Label" parent="Credits"]
+margin_left = 86.0
+margin_top = 69.0
+margin_right = 358.0
+margin_bottom = 133.0
+custom_fonts/font = SubResource( 8 )
+text = "Credits:"
+valign = 1
+
+[node name="Text" type="Label" parent="Credits"]
+margin_left = 90.0
+margin_top = 200.0
+margin_right = 889.0
+margin_bottom = 305.0
+custom_fonts/font = SubResource( 10 )
+text = "All the games art and code were made by me.
+"
+valign = 1
+
+[node name="Back_button" type="TextureButton" parent="Credits"]
+margin_left = 51.0
+margin_top = 530.0
+margin_right = 131.0
+margin_bottom = 610.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="Font_button" type="Button" parent="Credits"]
+margin_left = 86.0
+margin_top = 300.0
+margin_right = 722.0
+margin_bottom = 330.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "The only font used was made by Tyler Finck."
+flat = true
+
+[node name="Sfxr_button" type="Button" parent="Credits"]
+margin_left = 86.0
+margin_top = 375.0
+margin_right = 719.0
+margin_bottom = 405.0
+custom_fonts/font = SubResource( 14 )
+text = "The sound effect were generated using sfxr."
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Close_credits = SubResource( 4 )
+anims/Open_credits = SubResource( 5 )
+anims/Open_scene = SubResource( 15 )
+anims/Play_game = SubResource( 6 )
+
+[node name="Select_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+bus = "Sound effects"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 16 )
+
+[connection signal="pressed" from="Play_button" to="." method="_on_Play_button_pressed"]
+[connection signal="pressed" from="Credits_button" to="." method="_on_Credits_button_pressed"]
+[connection signal="toggled" from="Sound_button" to="." method="_on_Sound_button_toggled"]
+[connection signal="pressed" from="Credits/Back_button" to="." method="_on_Back_button_pressed"]
+[connection signal="pressed" from="Credits/Font_button" to="." method="_on_Font_button_pressed"]
+[connection signal="pressed" from="Credits/Sfxr_button" to="." method="_on_Sfxr_button_pressed"]
